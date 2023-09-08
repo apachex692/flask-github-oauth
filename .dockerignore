@@ -1,0 +1,10 @@
+.git/
+__pycache__/
+venv/
+
+*.swp
+.gitignore
+
+Dockerfile
+env.example
+README.md
