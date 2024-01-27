@@ -39,6 +39,45 @@ Certainly, Master Sakthi Santhosh. The OAuth flow involves several steps to enab
 
 This comprehensive flow ensures secure and authorized access to resources while maintaining user privacy and control over their data.
 
+## Types of OAuth2.0 Flows
+
+### 1. Authorization Code Flow
+
+- **Used In:** Web Application with a Server Back-end (this project)
+- **Steps Involved:**
+    1. The web application makes a request to the authorization provider by redirecting the user.
+    2. The user enters their credentials thereby providing a grant to the web application.
+    3. The authorization provider then sends a code to the web application's back-end. The URL for sending this code is pre-defined by the web application developers in the authorization provider settings.
+    4. The back-end, with the code received, makes a request to the authorization server (with client ID and client secret) to receive access/refresh tokens in exchange for the code. The code is invalidated (expires) after successful exchange for token. 
+    5. With the access and refresh token in the back-end server, the back-end server can now access the protected resources of the user on behalf of them and send the information to the web application.
+
+### 2. Implicit Code Flow
+
+- **Used In:** Single Page Application (no back-end, completely runs off the browser)
+- **Note:** Here, since the browser cannot save client secret securely, there is no exchange for tokens with code. Hence step-3 and step-4 of Authorization Code Flow (method-1) is not applicable here.
+- **Steps Involved:**
+    1. The SPA makes a request with the client ID to the authorization server.
+    2. The user enters their credentials thereby providing a grant to the SPA.
+    3. The authorization server after validating the user, sends tokens directly to the SPA.
+
+### 3. Client Credentials Flow
+
+- **Used In:** Server-Server Communication
+- **Note:** Here, there is no user interaction. A server makes request to the authorization server with the client ID and secrets directly. This is useful when the server itself wants to authorize to a 3rd party service.
+- **Steps Involved:**
+    1. The backend service sends a request to the authorization server with its client ID and client secret.
+    2. The authorization server verifies the client credentials and responds with an access token.
+    3. The backend service can now use the obtained access token to make requests to the third-party API on its own behalf.
+
+### 4. Resource Owner Password Credentials (ROPC) Flow
+
+- **Used In:** Legacy or Highly Trusted Clients or Mobile Apps
+- **Note:** Instead of the user entering the user credentials of the IdP in the IdP's website, the application itself takes it and sends it directly to the authorization (IdP) server thereby eliminating the redirection to the IdP website.
+- **Steps Involved:**
+    1. The user enters the credentials in the application.
+    2. The application makes a request with the username and password to the authorization server (no client ID or client secret).
+    3. The application, if the information sent is validated, receives the tokens.
+
 ## Contributing
 
 This is a LAD project and I discourage submitting issues/public contributions. The repository has been kept public only for learning purpose.
