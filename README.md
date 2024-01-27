@@ -71,8 +71,8 @@ This comprehensive flow ensures secure and authorized access to resources while 
 
 ### 4. Resource Owner Password Credentials (ROPC) Flow
 
-- **Used In:** Legacy or Highly Trusted Clients or Mobile Apps
-- **Note:** Instead of the user entering the user credentials of the IdP in the IdP's website, the application itself takes it and sends it directly to the authorization (IdP) server thereby eliminating the redirection to the IdP website.
+- **Used In:** First Party Clients (same company that hosts the back-end, authorize on the same platform)
+- **Note:** Here, the client is highly trustable because the client is from the same service provider. Hence, the authorization server is the back-end server and not another thrid party OAuth provider. Hence, no client ID and client secets is required as the client is manufactured by the same service provider. The user credentials are directly used to get tokens here. (PaperCloud)
 - **Steps Involved:**
     1. The user enters the credentials in the application.
     2. The application makes a request with the username and password to the authorization server (no client ID or client secret).
